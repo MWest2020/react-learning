@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import GuestList from './GuestList';
-import Counter from './Counter'
+import Header from './Header';
+import Main from './Main';
+
 import './App.css';
 
 class App extends Component {
@@ -106,32 +107,28 @@ class App extends Component {
     const numberUnconfirmed = totalInvited - numberAttending;
     return (
       <div className="App">
-        <header>
-          <h1>Quest Line</h1>
-          <br></br>
-          <p>A Quick Check App</p>
-          <form onSubmit={this.newGuestSubmitHandler}>
-              <input 
-                type="text"
-                onChange={this.handleNameInput} 
-                value={this.state.pendingGuest}
-                placeholder="Invite Someone"
-                />
-              <button type="submit" name="submit" value="submit">Submit</button>
-          </form>
-        </header>
-        <div className="main">
-          <div>
-            <h2>Invitees</h2>
-            <label>
-              <input 
-                type="checkbox"
-                onChange={this.toggleFilter}
-                checked={this.state.isFiltered}
-               /> Hide those who haven't responded
-            </label>
-          </div>
-          <Counter 
+        <Header 
+          newGuestSubmitHandler={this.newGuestSubmitHandler}
+          handleNameInput={this.handleNameInput}
+          pendingGuest={this.pendingGuest}
+
+        />
+        
+          <Main 
+            toggleFilter={this.toggleFilter}
+            isFiltered={this.isFiltered}
+            totalInvited={totalInvited}
+            numberAttending={numberAttending}
+            numberUnconfirmed={numberUnconfirmed}
+            guests={this.state.guests}
+            toggleConfirmationAt={this.toggleConfirmationAt}
+            toggleEditingAt={this.toggleEditingAt}
+            setNameAt={this.setNameAt}
+            removeGuestAt={this.removeGuestAt}
+            pendingGuest={this.state.pendingGuest}
+
+          />
+          {/* <Counter 
             
             totalInvited={totalInvited}
             numberAttending={numberAttending}
@@ -146,9 +143,9 @@ class App extends Component {
             isFiltered={this.state.isFiltered}
             removeGuestAt={this.removeGuestAt}
             pendingGuest={this.state.pendingGuest}
-             />
+             /> */}
 
-        </div>
+        
       </div>
     );
   }

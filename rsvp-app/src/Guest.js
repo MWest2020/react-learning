@@ -6,9 +6,9 @@ const Guest = props =>
      
     <li>
         <GuestName 
-        isEditing={props.isEditing}
-        handleNameEdits={ e => props.setName(e.target.value)}
-        >{props.name}
+            isEditing={props.isEditing}
+            handleNameEdits={ e => props.setName(e.target.value)}
+            >{props.name}
         </GuestName>
     <label>
         <input 
