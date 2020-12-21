@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 const ConfirmedFilter = (props) => {
     return(
-        
-            
+       <div> 
+        <h2>Invitees</h2>     
         <label>
             <input 
             type="checkbox"
@@ -12,13 +12,13 @@ const ConfirmedFilter = (props) => {
             checked={props.isFiltered}
             /> Hide those who haven't responded
         </label>
-        
+       </div> 
     )}
 
 
 ConfirmedFilter.propTypes = {
-    toggleFilter: PropTypes.func,
-    isFiltered: PropTypes.func
+    toggleFilter: PropTypes.func.isRequired,
+    isFiltered: PropTypes.bool.isRequired
 }
 
 
