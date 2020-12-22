@@ -64,7 +64,7 @@ class AddPlayerForm extends Component{
     }
 }
 
-export default AddPlayerForm
+export default AddPlayerForm;
 
 
 //Below is the code snippet from the teacher's note with the class Component as a function component, to demonstrate the use of ref within a function component
