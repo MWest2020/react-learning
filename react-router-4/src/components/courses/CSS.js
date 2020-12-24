@@ -1,21 +1,23 @@
-import React from 'react';
-import Course from './Course';
-import { CSSCourses } from '../../data/courses';
+//EXAMPLE. NO LONGER NEEDED SINCE PASSING THE DATA TO COMPONENTS THROUGH ROUTES AS PROPS
 
-const CSS = (props) => {
-  let courses = CSSCourses.map((course) => {
-    return <Course title={course.title}
-                   desc={course.description}
-                   img={course.img_src}
-                   key={course.id} />
-  }); 
-  return (
-    <div>
-      <ul>
-        {courses}    
-      </ul>
-    </div>
-  );
-}
+// import React from 'react';
+// import Course from './Course';
+// import { CSSCourses } from '../../data/courses';
 
-export default CSS;
+// const CSS = (props) => {
+//   let courses = CSSCourses.map((course) => {
+//     return <Course title={course.title}
+//                    desc={course.description}
+//                    img={course.img_src}
+//                    key={course.id} />
+//   }); 
+//   return (
+//     <div>
+//       <ul>
+//         {courses}    
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default CSS;
