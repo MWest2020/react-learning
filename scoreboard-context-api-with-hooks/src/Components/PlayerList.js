@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {ScoreboardContext} from './Context';
 import Player from './Player';
 
 const PlayerList = () => {
+  
+  const {players} = useContext(ScoreboardContext);
+  
   return (
     <>
-      <Player 
-        key={1} 
-        index={0}
-      />
+      {players.map( (player, index) => 
+        
+        <Player 
+        key={player.id} 
+        index={index}
+        />
+
+      )}
     </>
   );
 }

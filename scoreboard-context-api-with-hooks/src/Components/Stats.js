@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ScoreboardContext } from './Context';
+
 
 const Stats = () => {
 
-  // const totalPlayers = players.length;
-  // const totalPoints = players.reduce( (total, player) => {
-  //   return total + player.score;
-  // }, 0);
+
+  const { players } = useContext(ScoreboardContext);
+
+  const totalPlayers = players.length;
+  const totalPoints = players.reduce( (total, player) => {
+    return total + player.score;
+  }, 0);
 
   return (
     <table className="stats">
       <tbody>
         <tr>
           <td>Players:</td>
-          <td>0</td>
+          <td>${totalPlayers}</td>
         </tr>
         <tr>
           <td>Total Points:</td>
-          <td>0</td>
+          <td>${totalPoints}</td>
         </tr>
       </tbody>
     </table>
