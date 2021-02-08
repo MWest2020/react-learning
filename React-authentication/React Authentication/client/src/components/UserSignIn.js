@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Form from './Form';
 
 export default class UserSignIn extends Component {
+  
   state = {
     username: '',
     password: '',
@@ -26,7 +27,7 @@ export default class UserSignIn extends Component {
             submit={this.submit}
             submitButtonText="Sign In"
             elements={() => (
-              <React.Fragment>
+              <>
                 <input 
                   id="username" 
                   name="username" 
@@ -41,7 +42,7 @@ export default class UserSignIn extends Component {
                   value={password} 
                   onChange={this.change} 
                   placeholder="Password" />                
-              </React.Fragment>
+              </>
             )} />
           <p>
             Don't have a user account? <Link to="/signup">Click here</Link> to sign up!
@@ -63,10 +64,29 @@ export default class UserSignIn extends Component {
   }
 
   submit = () => {
-
+    const { context } = this.props;
+    const { from } = this.props.location.state || { from: { pathname: '/authenticated' }}; 
+    const { username, password } = this.state;
+    context.actions.signIn(username, password)
+    .then( user => {
+      this.setState( () => {
+        if(user === null) {
+          return {errors: [ 'Sign-in was unsuccesful' ]};
+        } else {
+          this.props.history.push(from);
+          console.log(`SUCCESS ${username} is now signed-in!`)
+        }
+      })
+    })
+    .catch(
+      (err) => {
+        console.log(err);
+        this.props.history.push('/error');
+      })
   }
+  
 
   cancel = () => {
-
+    this.props.history.push('/');
   }
 }
